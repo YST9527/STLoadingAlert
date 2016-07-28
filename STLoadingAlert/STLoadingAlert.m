@@ -27,7 +27,7 @@
         self.userInteractionEnabled = NO;
         self.layer.cornerRadius = 13;
         self.layer.masksToBounds = YES;
-        _loadingView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+        _loadingView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
         _loadingView.image = [[UIImage imageNamed:@"loading_imgBlue_78x78"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [_loadingView setTintColor:__MAIN_COLOR];
         [self addSubview:_loadingView];
@@ -36,6 +36,7 @@
 }
 
 - (void)NetworkConnectFailedNotificaton:(NSNotification *)notification {
+    _showInView.userInteractionEnabled = YES;
     self.loading = NO;
 }
 
@@ -58,10 +59,8 @@
         [_showInView addSubview:self];
         
         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
-        self.center = CGPointMake(CGRectGetWidth(_showInView.frame)/2, CGRectGetHeight(_showInView.frame)/4);
         [UIView animateWithDuration:0.3 animations:^{
             self.transform = CGAffineTransformIdentity;
-            self.center = CGPointMake(CGRectGetWidth(_showInView.frame)/2, CGRectGetHeight(_showInView.frame)/2);
         } completion:^(BOOL finished) {
             
         }];
@@ -78,7 +77,7 @@
 }
 
 - (void)dealloc {
-//    __SHOW_FUNCTION;
+    //    __SHOW_FUNCTION;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -89,7 +88,8 @@
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title;
 
 @end
-
+static SimpleAlertView *simpleView = nil;
+static STIndicatorView *indView = nil;
 @implementation SimpleAlertView
 
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title {
@@ -118,30 +118,24 @@
                 self.transform = CGAffineTransformIdentity;
             }];
         }];
-        CABasicAnimation *animation2 = [CABasicAnimation animationWithKeyPath:@"transform.scale.x"];
-        animation2.fromValue = @1;
-        animation2.toValue = @0.2f;
-        animation2.beginTime = CACurrentMediaTime()+2.8;
-        animation2.duration = 0.5f;
-        [self.layer addAnimation:animation2 forKey:nil];
-        CABasicAnimation *animation3 = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
-        animation3.fromValue = @1;
-        animation3.toValue = @0.2f;
-        animation3.beginTime = CACurrentMediaTime()+2.8;
-        animation3.duration = 0.5f;
-        [self.layer addAnimation:animation3 forKey:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:0.3 animations:^{
+                self.transform = CGAffineTransformMakeScale(0.4, 0.4);
+            } completion:^(BOOL finished) {
+                simpleView = nil;
+                [self removeFromSuperview];
+            }];
+        });
+        
     }
     return self;
 }
 
 - (void)dealloc {
-//    __SHOW_FUNCTION;
+    //    __SHOW_FUNCTION;
 }
 
 @end
-
-static SimpleAlertView *simpleView = nil;
-static STIndicatorView *indView = nil;
 
 @implementation STLoadingAlert
 
@@ -157,7 +151,7 @@ STAlertView * ShowSTAlertView(NSString *title, NSString *content, NSString *canc
 
 void ShowLoading() {
     if (indView == nil) {
-        indView = [[STIndicatorView alloc]initWithFrame:CGRectMake(__DEVICE_WIDTH/2-30, __DEVICE_HEIGHT/2-30, 60, 60) showInView:__APP_WINDOW];
+        indView = [[STIndicatorView alloc]initWithFrame:CGRectMake(__DEVICE_WIDTH/2-25, __DEVICE_HEIGHT/2-25, 50, 50) showInView:__APP_WINDOW];
         indView.loading = YES;
     } else {
         indView.loading = YES;
@@ -172,7 +166,7 @@ void ShowDismiss() {
 }
 
 STIndicatorView * ShowLoadingInView(UIView *view) {
-    STIndicatorView *tempView = [[STIndicatorView alloc]initWithFrame:CGRectMake(CGRectGetWidth(view.frame)/2-30, CGRectGetHeight(view.frame)/2-60, 60, 60) showInView:view];
+    STIndicatorView *tempView = [[STIndicatorView alloc]initWithFrame:CGRectMake(CGRectGetWidth(view.frame)/2-25, CGRectGetHeight(view.frame)/2-25, 50, 50) showInView:view];
     tempView.loading = YES;
     view.userInteractionEnabled = NO;
     return tempView;
@@ -206,10 +200,6 @@ bool ShowSimpleAlertInView(NSString *title, UIView *view) {
     CGRect rect = CGRectMake((__DEVICE_WIDTH-size.width)/2, (__DEVICE_HEIGHT-size.height)/2, size.width, size.height);
     simpleView = [[SimpleAlertView alloc]initWithFrame:rect title:title];
     [view addSubview:simpleView];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [simpleView removeFromSuperview];
-        simpleView = nil;
-    });
     return YES;
 }
 

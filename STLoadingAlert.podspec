@@ -1,4 +1,30 @@
 #
+d::Spec.new do |s|
+  s.name         = "STLoadingAlert"
+  s.version      = "0.0.1"
+  s.summary      = "Simple loading, prompt dialog box."
+  s.homepage     = "https://github.com/YST9527/STLoadingAlert"
+  s.license      = "MIT"
+  s.author       = { "尹思同" => "yinsitong9527@163.com" }
+  s.source       = { :git => "https://github.com/ltebean/LTNavigationbar.git", :tag => 's.version}
+  s.source_files = "STLoadingAlert/*"
+  s.requires_arc = true
+  s.platform     = :ios, '7.0'
+
+end
+d::Spec.new do |s|
+  s.name         = "STLoadingAlert"
+  s.version      = "0.0.1"
+  s.summary      = "Simple loading, prompt dialog box."
+  s.homepage     = "https://github.com/YST9527/STLoadingAlert"
+  s.license      = "MIT"
+  s.author       = { "尹思同" => "yinsitong9527@163.com" }
+  s.source       = { :git => "https://github.com/ltebean/LTNavigationbar.git", :tag => 's.version}
+  s.source_files = "STLoadingAlert/*"
+  s.requires_arc = true
+  s.platform     = :ios, '7.0'
+
+end
 #  Be sure to run `pod spec lint STLoadingAlert.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
@@ -17,17 +43,17 @@ Pod::Spec.new do |s|
 
   s.name         = "STLoadingAlert"
   s.version      = "0.0.1"
-  s.summary      = "Simple loading, prompt dialog box."
+  s.summary      = "A short description of STLoadingAlert."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  # s.description  = <<-DESC
+  s.description  = <<-DESC
                    DESC
 
-  s.homepage     = "https://github.com/YST9527/STLoadingAlert"
+  s.homepage     = "http://EXAMPLE/STLoadingAlert"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,7 +64,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT"
+  s.license      = "MIT (example)"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -64,10 +90,10 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "7.0"
+  # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "7.0"
+  # s.ios.deployment_target = "5.0"
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
@@ -79,7 +105,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/YST9527/STLoadingAlert.git", :tag => s.version }
+  s.source       = { :git => "http://EXAMPLE/STLoadingAlert.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,7 +116,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "STLoadingAlert/*"
+  s.source_files  = "Classes", "Classes/**/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -116,7 +142,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  s.framework  = "UIKit"
+  # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"
@@ -129,9 +155,18 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  s.requires_arc = true
+  # s.requires_arc = true
 
-  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # s.dependency "JSONKit", "~> 1.4"
+  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libPod::Spec.new do |s|
+  s.name         = "STLoadingAlert"
+  s.version      = "0.0.1"
+  s.summary      = "Simple loading, prompt dialog box."
+  s.homepage     = "https://github.com/YST9527/STLoadingAlert"
+  s.license      = "MIT"
+  s.author       = { "尹思同" => "yinsitong9527@163.com" }
+  s.source       = { :git => "https://github.com/ltebean/LTNavigationbar.git", :tag => 's.version}
+  s.source_files = "STLoadingAlert/*"
+  s.requires_arc = true
+  s.platform     = :ios, '7.0'
 
 end

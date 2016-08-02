@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/YST9527/STLoadingAlert"
   s.license      = "MIT"
   s.author       = { "尹思同" => "yinsitong9527@163.com" }
-  s.source       = { :git => "https://github.com/ltebean/LTNavigationbar.git", :tag => 's.version}
+  s.source       = { :git => "https://github.com/YST9527/STLoadingAlert.git", :tag => s.version}
   s.source_files = "STLoadingAlert/*"
   s.requires_arc = true
   s.platform     = :ios, '7.0'

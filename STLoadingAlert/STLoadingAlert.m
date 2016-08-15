@@ -106,21 +106,17 @@ static STIndicatorView *indView = nil;
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont boldSystemFontOfSize:15];
         label.text = title;
-        label.alpha = 0;
         [self addSubview:label];
-        self.transform = CGAffineTransformMakeScale(0.2, 0.2);
+        self.alpha = 0;
+        self.transform = CGAffineTransformMakeScale(1.8, 1.8);
         [UIView animateWithDuration:0.3 animations:^{
-            label.alpha = 0.7;
-            self.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.3 animations:^{
-                label.alpha = 1;
-                self.transform = CGAffineTransformIdentity;
-            }];
+            self.alpha = 1;
+            self.transform = CGAffineTransformIdentity;
         }];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.3 animations:^{
                 self.transform = CGAffineTransformMakeScale(0.4, 0.4);
+                self.alpha = 0;
             } completion:^(BOOL finished) {
                 simpleView = nil;
                 [self removeFromSuperview];
@@ -130,6 +126,7 @@ static STIndicatorView *indView = nil;
     }
     return self;
 }
+
 
 - (void)dealloc {
     //    __SHOW_FUNCTION;

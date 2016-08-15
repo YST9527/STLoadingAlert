@@ -53,7 +53,7 @@
 }
 
 - (instancetype)initWithTitle:(NSString *)title content:(NSString *)content cancelButton:(NSString *)cancelTitle okButton:(NSString *)okTitle {
-
+    
     if (self = [super initWithFrame:CGRectZero]) {
         _backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, __DEVICE_WIDTH, __DEVICE_HEIGHT)];
         _backgroundView.backgroundColor = [__COLOR_A colorWithAlphaComponent:0.7];
@@ -121,8 +121,9 @@
         _okBtn.layer.masksToBounds = YES;
         [self addSubview:_okBtn];
         self.frame = CGRectMake(0, 0, __ALERT_WIDTH, CGRectGetMaxY(_okBtn.frame)+__VERTICAL_INTERVAL);
-        self.center = CGPointMake(__DEVICE_WIDTH/2, -CGRectGetHeight(self.frame));
-        self.transform = CGAffineTransformMakeRotation(M_PI_2/3.5);
+        self.center = CGPointMake(__DEVICE_WIDTH/2, __DEVICE_HEIGHT/2);
+        self.transform = CGAffineTransformMakeScale(2, 2);
+        self.alpha = 0;
     }
     return self;
 }
@@ -132,35 +133,20 @@
     __SAFE_BLOCK(self.statusChangedBlock, STAlertViewStatusWillShow);
     [[UIApplication sharedApplication].keyWindow addSubview:_backgroundView];
     [[UIApplication sharedApplication].keyWindow addSubview:self];
-    [UIView animateWithDuration:0.4 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         _backgroundView.alpha = 0.6;
-        self.center = CGPointMake(__DEVICE_WIDTH/2, __DEVICE_HEIGHT/2);
+        self.alpha = 1;
         self.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
-        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-        animation.fromValue = [NSNumber numberWithFloat:-0.1];
-        animation.toValue = [NSNumber numberWithFloat:0.2];
-        animation.duration = 0.1;
-        animation.repeatCount = 2;
-        animation.autoreverses = YES;
-        [self.layer addAnimation:animation forKey:nil];
-    __SAFE_BLOCK(self.statusChangedBlock, STAlertViewStatusDidShow);
+        __SAFE_BLOCK(self.statusChangedBlock, STAlertViewStatusDidShow);
     }];
 }
 
 - (void)buttonClicked:(UIButton *)button {
-        __SAFE_BLOCK(self.statusChangedBlock, STAlertViewStatusWillDismiss);
-    if (button == _cancelBtn) {
-        self.transform = CGAffineTransformMakeRotation(-M_1_PI);
-    } else {
-        if (_cancelBtn) {
-            self.transform = CGAffineTransformMakeRotation(M_1_PI);
-        }
-    }
-    CGPoint center = CGPointMake(__DEVICE_WIDTH/2, __DEVICE_HEIGHT+CGRectGetHeight(self.frame));
-    [UIView animateWithDuration:0.4 animations:^{
+    __SAFE_BLOCK(self.statusChangedBlock, STAlertViewStatusWillDismiss);
+    [UIView animateWithDuration:0.3 animations:^{
         _backgroundView.alpha = 0;
-        self.center = center;
+        self.alpha = 0;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
         [_backgroundView removeFromSuperview];

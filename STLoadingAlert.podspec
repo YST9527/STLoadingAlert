@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author       = { "尹思同" => "yinsitong9527@163.com" }
   s.source       = { :git => "https://github.com/YST9527/STLoadingAlert.git", :tag => s.version}
   s.source_files = "STLoadingAlert/*"
-  s.resources = "STLoadingAlertDemo/*.png"
+  s.resources = "STLoadingAlertDemo/STLoadingAlert/Assets"
   s.requires_arc = true
   s.platform     = :ios, '7.0'
 

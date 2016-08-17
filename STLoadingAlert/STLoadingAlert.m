@@ -28,7 +28,8 @@
         self.layer.cornerRadius = 13;
         self.layer.masksToBounds = YES;
         _loadingView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-        _loadingView.image = [[UIImage imageNamed:@"loading_imgBlue_78x78"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[STAlertView class]] pathForResource:@"STLoadingAlert" ofType:@"bundle"]];
+        _loadingView.image = [[UIImage imageWithContentsOfFile:[bundle pathForResource:@"loading_imgBlue_78x78@2x" ofType:@"png"]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [_loadingView setTintColor:__MAIN_COLOR];
         [self addSubview:_loadingView];
     }

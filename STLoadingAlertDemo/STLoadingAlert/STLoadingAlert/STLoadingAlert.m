@@ -154,6 +154,7 @@ void ShowLoading() {
     } else {
         indView.loading = YES;
     }
+    __APP_WINDOW.userInteractionEnabled = NO;
 }
 
 void ShowDismiss() {
@@ -161,6 +162,7 @@ void ShowDismiss() {
         indView.loading = NO;
         indView = nil;
     }
+    __APP_WINDOW.userInteractionEnabled = YES;
 }
 
 STIndicatorView * ShowLoadingInView(UIView *view) {
@@ -200,5 +202,7 @@ bool ShowSimpleAlertInView(NSString *title, UIView *view) {
     [view addSubview:simpleView];
     return YES;
 }
+
+
 
 @end

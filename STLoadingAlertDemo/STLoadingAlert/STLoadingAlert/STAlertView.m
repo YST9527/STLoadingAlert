@@ -155,6 +155,22 @@
     __SAFE_BLOCK(self.buttonClickedBlock, button.tag-10);
 }
 
+-(void)changeTitle:(NSString *)title{
+    _titleLabel.text = title;
+}
+
+-(void)dismiss{
+    __SAFE_BLOCK(self.statusChangedBlock, STAlertViewStatusWillDismiss);
+    [UIView animateWithDuration:0.3 animations:^{
+        _backgroundView.alpha = 0;
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+        [_backgroundView removeFromSuperview];
+        __SAFE_BLOCK(self.statusChangedBlock, STAlertViewStatusDidDismiss);
+    }];
+}
+
 - (UIImage *)imageWithColor:(UIColor *)color
 {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);

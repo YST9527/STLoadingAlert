@@ -213,4 +213,8 @@ typedef void(^STAlertViewStatusChangedBlock)(STAlertViewStatus status);
 
 - (void)show;
 
+-(void)changeTitle:(NSString *)title;
+
+-(void)dismiss;
+
 @end

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "STLoadingAlert"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "Simple loading, prompt dialog box."
   s.homepage     = "https://github.com/YST9527/STLoadingAlert"
   s.license      = "MIT"

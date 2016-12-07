@@ -134,6 +134,7 @@
 				TargetAttributes = {
 					1873BB5C1C8C22F300052DC5 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = VSPS67EELA;
 					};
 				};
 			};
@@ -289,6 +290,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VSPS67EELA;
 				INFOPLIST_FILE = STLoadingAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ygcd.client.STLoadingAlert;
@@ -300,6 +302,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VSPS67EELA;
 				INFOPLIST_FILE = STLoadingAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ygcd.client.STLoadingAlert;
@@ -326,6 +329,7 @@
 				1873BB7C1C8C22F300052DC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
